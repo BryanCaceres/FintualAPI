@@ -45,8 +45,8 @@ class ProfitService {
 
       let prevDate = new Date(toDate);
       prevDate.setDate(prevDate.getDate() - 1);
-      let formattedPrevDate = prevDate.toLocaleDateString('en-CA', {year: 'numeric',month: '2-digit',day: '2-digit'});
-
+      let formattedPrevDate = `${prevDate.getFullYear()}-${String(prevDate.getMonth() + 1).padStart(2, '0')}-${String(prevDate.getDate()).padStart(2, '0')}`;
+      
       console.log(`La fecha solicitada-${toDate}`);
       console.log(`La fecha de limite es-${formattedPrevDate}`);
       const allAssetsData = {}
