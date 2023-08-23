@@ -47,7 +47,8 @@ class ProfitService {
       prevDate.setDate(prevDate.getDate() - 1);
       let formattedPrevDate = prevDate.toLocaleDateString('en-CA', {year: 'numeric',month: '2-digit',day: '2-digit'});
 
-
+      console.log(toDate);
+      onsole.log(formattedPrevDate);
       const allAssetsData = {}
       for (const assetId in this.ASSETS) {
         const assetData = await this.getAssetData(assetId, toDate, formattedPrevDate);
