@@ -52,14 +52,15 @@ class ProfitService {
       for (const assetId in this.ASSETS) {
         const assetData = await this.getAssetData(assetId, toDate, formattedPrevDate);
         const extractedIdAndPrice = this.extractIdAndPrice(assetData);
-
+        console.log(extractedIdAndPrice)
         const assetCurrentValueId = `${assetId}-${toDate}`
         const assetPrevValueId = `${assetId}-${formattedPrevDate}`
 
         const assetProfit = this.calculateProfit(extractedIdAndPrice[assetCurrentValueId], extractedIdAndPrice[assetPrevValueId]);
+        console.log(assetProfit)
         allAssetsData[this.ASSETS[assetId]] = assetProfit;
       }
-
+      console.log(allAssetsData)
       return {
         error: false, 
         msg: `Rentabilidad de los fondos obtenidos con éxito para el día ${toDate}`,
