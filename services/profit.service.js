@@ -47,18 +47,17 @@ class ProfitService {
       prevDate.setDate(prevDate.getDate() - 1);
       let formattedPrevDate = `${prevDate.getFullYear()}-${String(prevDate.getMonth() + 1).padStart(2, '0')}-${String(prevDate.getDate()).padStart(2, '0')}`;
       
-      console.log(`La fecha solicitada-${toDate}`);
-      console.log(`La fecha de limite es-${formattedPrevDate}`);
+
       const allAssetsData = {}
       for (const assetId in this.ASSETS) {
         const assetData = await this.getAssetData(assetId, toDate, formattedPrevDate);
         const extractedIdAndPrice = this.extractIdAndPrice(assetData);
-        console.log(`informacion general extraida-${extractedIdAndPrice}`)
+        
         const assetCurrentValueId = `${assetId}-${toDate}`
         const assetPrevValueId = `${assetId}-${formattedPrevDate}`
 
         const assetProfit = this.calculateProfit(extractedIdAndPrice[assetCurrentValueId], extractedIdAndPrice[assetPrevValueId]);
-        console.log(assetProfit)
+
         allAssetsData[this.ASSETS[assetId]] = assetProfit;
       }
       console.log(allAssetsData)
